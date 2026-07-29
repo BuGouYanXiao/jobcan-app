@@ -29,13 +29,16 @@ class SplashActivity : AppCompatActivity() {
 
             // 保存済みセッション確認
             if (sessionManager.hasCredentials() && sessionManager.isLoggedIn()) {
-                val valid = service.isSessionValid()
-                if (valid) {
-                    goToMain()
-                    return@launch
-                }
-            }
-            goToLogin()
+                try {
+    val valid = service.isSessionValid()
+    if (valid) {
+        goToMain()
+        return@launch
+    }
+} catch (e: Exception) {
+    // セッション確認失敗は無視
+}
+goToLogin()
         }
     }
 
