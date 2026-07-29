@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Background -->
+    <color name="bg_dark">#0A0F1E</color>
+    <color name="bg_card">#12192E</color>
+    <color name="bg_input">#1C2640</color>
+
+    <!-- Text -->
+    <color name="text_primary">#F0F4FF</color>
+    <color name="text_muted">#7B8CB0</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- Accent -->
+    <color name="accent_blue">#4F8EF7</color>
+    <color name="accent_cyan">#00D4FF</color>
+    <color name="accent_green">#00E5A0</color>
+    <color name="accent_orange">#FF8C42</color>
+    <color name="accent_red">#FF5470</color>
+
+    <!-- Border -->
+    <color name="border_subtle">#2A3A5C</color>
+
+    <!-- Status -->
+    <color name="status_not_started">#00E5A0</color>
+    <color name="status_working">#4F8EF7</color>
+    <color name="status_break">#FF8C42</color>
+    <color name="status_finished">#7B8CB0</color>
+    <color name="status_error">#FF5470</color>
+
+    <!-- Clock button -->
+    <color name="btn_clock_in">#4F8EF7</color>
+    <color name="btn_clock_out">#FF5470</color>
+    <color name="btn_break_end">#FF8C42</color>
+    <color name="btn_finished">#3A4A6A</color>
+
+    <!-- MaterialComponents required -->
+    <color name="colorPrimary">#4F8EF7</color>
+    <color name="colorPrimaryVariant">#2A6FE0</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorSecondary">#00D4FF</color>
+    <color name="colorOnSecondary">#000000</color>
+    <color name="colorSurface">#12192E</color>
+    <color name="colorOnSurface">#F0F4FF</color>
+    <color name="colorBackground">#0A0F1E</color>
+    <color name="colorOnBackground">#F0F4FF</color>
+    <color name="colorError">#FF5470</color>
+    <color name="colorOnError">#FFFFFF</color>
+</resources>

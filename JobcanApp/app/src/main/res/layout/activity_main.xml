@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingBottom="40dp">
+
+                <!-- HEADER -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="52dp"
+                    android:layout_marginBottom="16dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tvGreeting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="おはようございます"
+                            android:textSize="13sp"
+                            android:textColor="@color/text_muted"/>
+                        <TextView
+                            android:id="@+id/tvUserName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ユーザー"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_primary"/>
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnLogout"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:text="ログアウト"
+                        android:textSize="11sp"
+                        android:textColor="@color/text_muted"
+                        app:strokeColor="@color/border_subtle"
+                        app:cornerRadius="18dp"/>
+                </LinearLayout>
+
+                <!-- DATE/TIME + STATUS CARD -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/bg_card"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/border_subtle"
+                    android:layout_marginBottom="12dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="20dp"
+                        android:gravity="center_vertical">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView
+                                android:id="@+id/tvDate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="2024年1月1日 (月)"
+                                android:textSize="13sp"
+                                android:textColor="@color/text_muted"/>
+                            <TextView
+                                android:id="@+id/tvClock"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="09:00"
+                                android:textSize="44sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/text_primary"
+                                android:fontFamily="monospace"/>
+                        </LinearLayout>
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="@color/bg_input"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="0dp"
+                            app:strokeWidth="1dp"
+                            app:strokeColor="@color/accent_blue">
+                            <TextView
+                                android:id="@+id/tvStatus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="● 未出勤"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/accent_blue"
+                                android:paddingHorizontal="14dp"
+                                android:paddingVertical="6dp"/>
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- WORK INFO CARDS -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="28dp">
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        app:cardBackgroundColor="@color/bg_card"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="0dp"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="@color/border_subtle">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="勤務時間"
+                                android:textSize="11sp"
+                                android:textColor="@color/text_muted"/>
+                            <TextView
+                                android:id="@+id/tvWorkTime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="--h --m"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/accent_blue"
+                                android:layout_marginTop="4dp"/>
+                            <TextView
+                                android:id="@+id/tvWorkStart"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="開始: --:--"
+                                android:textSize="11sp"
+                                android:textColor="@color/text_muted"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        app:cardBackgroundColor="@color/bg_card"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="0dp"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="@color/border_subtle">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="休憩時間"
+                                android:textSize="11sp"
+                                android:textColor="@color/text_muted"/>
+                            <TextView
+                                android:id="@+id/tvBreakTime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="--分"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/accent_orange"
+                                android:layout_marginTop="4dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="本日合計"
+                                android:textSize="11sp"
+                                android:textColor="@color/text_muted"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+                <!-- ★ 丸打刻ボタン ★ -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginBottom="28dp">
+
+                    <!-- ローディング -->
+                    <ProgressBar
+                        android:id="@+id/statusLoadingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:indeterminateTint="@color/accent_blue"
+                        android:visibility="gone"
+                        android:layout_marginBottom="8dp"/>
+
+                    <!-- 丸ボタン本体（FrameLayoutで3重リング+ボタン） -->
+                    <FrameLayout
+                        android:layout_width="220dp"
+                        android:layout_height="220dp">
+
+                        <!-- 外リング1 -->
+                        <View
+                            android:layout_width="220dp"
+                            android:layout_height="220dp"
+                            android:background="@drawable/circle_ring_outer"
+                            android:alpha="0.4"/>
+
+                        <!-- 外リング2 -->
+                        <View
+                            android:layout_width="188dp"
+                            android:layout_height="188dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/circle_ring_inner"
+                            android:alpha="0.6"/>
+
+                        <!-- グロー背景 -->
+                        <View
+                            android:id="@+id/viewGlow"
+                            android:layout_width="164dp"
+                            android:layout_height="164dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/circle_glow"
+                            android:alpha="0.7"/>
+
+                        <!-- ★ メイン丸ボタン（Button = クリック確実） ★ -->
+                        <Button
+                            android:id="@+id/btnClock"
+                            android:layout_width="152dp"
+                            android:layout_height="152dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/btn_clock_bg"
+                            android:elevation="12dp"
+                            android:stateListAnimator="@null"
+                            android:text=""
+                            android:contentDescription="打刻"/>
+
+                        <!-- ボタン上のテキスト（InputTransparent） -->
+                        <LinearLayout
+                            android:layout_width="152dp"
+                            android:layout_height="152dp"
+                            android:layout_gravity="center"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:clickable="false"
+                            android:focusable="false"
+                            android:importantForAccessibility="no">
+                            <TextView
+                                android:id="@+id/tvClockBtnIcon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="▶"
+                                android:textSize="34sp"
+                                android:textColor="@color/white"
+                                android:clickable="false"
+                                android:focusable="false"/>
+                            <TextView
+                                android:id="@+id/tvClockBtnLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="出勤"
+                                android:textSize="17sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/white"
+                                android:letterSpacing="0.15"
+                                android:clickable="false"
+                                android:focusable="false"/>
+                        </LinearLayout>
+
+                        <!-- パンチ中スピナー -->
+                        <ProgressBar
+                            android:id="@+id/punchingSpinner"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_gravity="center"
+                            android:indeterminateTint="@color/white"
+                            android:visibility="gone"/>
+                    </FrameLayout>
+
+                    <!-- エラーテキスト -->
+                    <TextView
+                        android:id="@+id/tvError"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/accent_red"
+                        android:textSize="13sp"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:visibility="gone"/>
+
+                    <!-- 休憩ボタン -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="22dp"
+                        android:gravity="center">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnBreakStart"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="44dp"
+                            android:text="☕  休憩開始"
+                            android:textSize="13sp"
+                            android:textColor="@color/accent_orange"
+                            app:strokeColor="@color/accent_orange"
+                            app:cornerRadius="22dp"
+                            android:paddingHorizontal="20dp"
+                            android:layout_marginEnd="10dp"
+                            android:visibility="gone"/>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnBreakEnd"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="44dp"
+                            android:text="▶  休憩終了"
+                            android:textSize="13sp"
+                            android:textColor="@color/accent_cyan"
+                            app:strokeColor="@color/accent_cyan"
+                            app:cornerRadius="22dp"
+                            android:paddingHorizontal="20dp"
+                            android:visibility="gone"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- 打刻記録 -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/bg_card"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/border_subtle">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="本日の打刻記録"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_muted"
+                            android:layout_marginBottom="12dp"/>
+                        <LinearLayout
+                            android:id="@+id/llRecords"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

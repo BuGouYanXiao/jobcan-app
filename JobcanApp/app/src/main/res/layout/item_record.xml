@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingVertical="8dp">
+
+    <!-- ドット -->
+    <View
+        android:id="@+id/viewDot"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:background="@drawable/shape_dot"
+        android:layout_marginEnd="12dp"/>
+
+    <!-- 種別 -->
+    <TextView
+        android:id="@+id/tvRecordType"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="13sp"
+        android:textColor="#F0F4FF"/>
+
+    <!-- 時刻 -->
+    <TextView
+        android:id="@+id/tvRecordTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="#7B8CB0"
+        android:fontFamily="monospace"/>
+
+</LinearLayout>
