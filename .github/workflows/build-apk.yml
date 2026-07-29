@@ -42,7 +42,29 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      - name: Ensure gradle.properties
+        run: |
+          echo "android.useAndroidX=true" >> gradle.properties
+          echo "android.enableJetifier=true" >> gradle.properties
+          echo "org.gradle.jvmargs=-Xmx2048m" >> gradle.properties
+
       - name: Build Debug APK
         run: |
           echo "sdk.dir=$HOME/android-sdk" > local.properties
           ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: Find APK
+        run: |
+          echo "=== Searching for APK ==="
+          find . -name "*.apk" 2>/dev/null
+          echo "=== Build outputs ==="
+          find . -path "*/outputs/*" 2>/dev/null
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: jobcan-debug-apk
+          path: |
+            app/build/outputs/apk/**/*.apk
+          if-no-files-found: warn
+          retention-days: 30
