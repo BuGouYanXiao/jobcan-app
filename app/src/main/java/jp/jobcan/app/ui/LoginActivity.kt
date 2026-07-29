@@ -176,13 +176,14 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onReceivedHttpError(view: WebView, request: WebResourceRequest, errorResponse: HttpErrorResponse) {
-                if (request.isForMainFrame) {
-                    timeoutHandler.removeCallbacks(timeoutRunnable)
-                    Log.e(TAG, "HTTP error: ${errorResponse.statusCode}")
-                    onLoginError("HTTPエラー: ${errorResponse.statusCode}")
-                }
-            }
+           override fun onReceivedHttpError(view: WebView, request: WebResourceRequest, errorResponse: WebResourceResponse) {
+    if (request.isForMainFrame) {
+        timeoutHandler.removeCallbacks(timeoutRunnable)
+        val statusCode = errorResponse.statusCode
+        Log.e(TAG, "HTTP error: $statusCode")
+        onLoginError("HTTPエラー: $statusCode")
+    }
+}
         }
 
         binding.hiddenWebView.loadUrl(JobcanService.LOGIN_URL)
